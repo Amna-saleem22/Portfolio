@@ -1,0 +1,102 @@
+
+.hero {
+   background-color: #1a1c1a; /* Dark charcoal */
+    height: 100vh;
+       font-family: 'Inter', sans-serif;
+    color: #f8f8f2;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Left Content */
+.content {
+    flex: 1.5;
+    padding-right: 50px;
+}
+
+.intro-line {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.line {
+    width: 40px;
+    height: 2px;
+    background-color: #c59d5f; /* Gold color */
+}
+
+.greeting {
+    font-size: 1.2rem;
+    color: #f4f4f4;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.arrow-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #c59d5f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c59d5f;
+}
+
+/* Right Image Area */
+.image-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image-wrapper img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Gold Horizontal Lines behind image */
+.decor-lines {
+    position: absolute;
+    left: -60px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.decor-lines span {
+    width: 100px;
+    height: 1px;
+    background-color: #c59d5f;
+    opacity: 0.6;
+}
