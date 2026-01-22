@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css'; // External CSS file
 import emailjs from "emailjs-com";
-import { Link } from 'react-router-dom';
+
 export default function Footer() {
 
 
