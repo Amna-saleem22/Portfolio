@@ -1,125 +1,59 @@
 import React from 'react';
-import './Navbar.css'; // External CSS file
-import emailjs from "emailjs-com";
+import { Mail } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from './SocialIcons';
 
-export default function Footer() {
+const NAV_LINKS = ['About', 'Skills', 'Services', 'Projects', 'Experience', 'Contact'];
 
-
-
-const sendEmail = (e) => {
-  e.preventDefault();
-
-  emailjs.sendForm(
-    "YOUR_SERVICE_ID",
-    "YOUR_TEMPLATE_ID",
-    e.target,
-    "YOUR_PUBLIC_KEY"
-  )
-  .then(
-    (result) => {
-      alert("Message sent successfully!");
-      e.target.reset();
-    },
-    (error) => {
-      alert("Something went wrong!");
-    }
-  );
+const scrollTo = (id) => {
+  const el = document.getElementById(id.toLowerCase());
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
-  
+export default function Footer() {
   return (
-   <>
-  <footer className="s-footer">
-  <div className="row s-footer__content">
+    <footer className="footer">
+      <div className="footer-logo">AM<span>NA</span></div>
 
-    {/* ABOUT */}
-    <div className="column xl-6 lg-6 md-12 s-footer__block s-footer__about">
-      <h3>About Me</h3>
-      <p>
-        I am a passionate Web Developer with hands-on experience in
-        React, Angular, JavaScript, HTML, and CSS. I build modern, responsive,
-        and user-friendly web applications including e-commerce systems,
-        authentication modules, and dynamic UI components. Along with
-        development, I also create clean UI designs, posters, and templates
-        using Canva and Figma.
-      </p>
-    </div>
-
-    {/* SITE LINKS */}
-    <div className="column xl-3 lg-6 md-12 s-footer__block s-footer__site-links">
-      {/* <h3>Quick Links</h3>
-       <ul className="s-header__menu-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/service">Services</Link></li>
-           
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/blog">Project</Link></li>
-          </ul> */}
-    </div>
-
-    {/* NEWSLETTER / CONTACT */}
-    <div className="column xl-3 lg-6 md-12 tab-12 s-footer__block s-footer__newsletter">
-      <h3>Work With Me</h3>
-      <p>
-        Looking for a responsive website, e-commerce app, or modern UI design?
-        Feel free to reach out — I’m available for freelance and remote work.
-      </p>
-
- <div className="subscribe-form">
-  <form className="mc-form" onSubmit={sendEmail}>
-    
-    <input
-      type="email"
-      name="user_email"
-      className="u-fullwidth text-center"
-      placeholder="Your Email Address"
-      required
-    />
-
-    <input
-      type="submit"
-      value="Contact Me"
-      className="btn btn--primary btn--small u-fullwidth"
-    />
-  </form>
-</div>
-
-    </div>
-
-  </div>
-
-  {/* FOOTER BOTTOM */}
-  <div className="row s-footer__bottom">
-
-    <div className="column xl-6 lg-12">
-      <ul className="s-footer__social social-list">
-        <li>
-          <a href="https://github.com/Amna-saleem22" target="_blank" rel="noreferrer">
-            <span className="u-screen-reader-text">GitHub</span>
+      <div className="footer-links">
+        {NAV_LINKS.map(l => (
+          <a
+            key={l}
+            href={`#${l.toLowerCase()}`}
+            onClick={e => { e.preventDefault(); scrollTo(l); }}
+          >
+            {l}
           </a>
-        </li>
-        <li>
-          <a href="#" target="_blank" rel="noreferrer">
-            <span className="u-screen-reader-text">LinkedIn</span>
-          </a>
-        </li>
-       
-      </ul>
-    </div>
+        ))}
+      </div>
 
- 
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+        <a href="https://github.com/Amna-Saleem22" target="_blank" rel="noopener noreferrer"
+          style={{ color: '#4b5563', transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
+          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
+          aria-label="GitHub">
+          <GitHubIcon size={20} />
+        </a>
+        <a href="https://linkedin.com/in/amna-saleem-it/" target="_blank" rel="noopener noreferrer"
+          style={{ color: '#4b5563', transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
+          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
+          aria-label="LinkedIn">
+          <LinkedInIcon size={20} />
+        </a>
+        <a href="mailto:saleemamna431@gmail.com"
+          style={{ color: '#4b5563', transition: 'color 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
+          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
+          aria-label="Email">
+          <Mail size={20} />
+        </a>
+      </div>
 
-    <div className="ss-go-top">
-      <a className="smoothscroll" title="Back to Top" href="#top">
-        ↑
-      </a>
-    </div>
-
-  </div>
-</footer>
-
-
-  </>
+      <p className="footer-copy">
+        &copy; {new Date().getFullYear()} Amna Saleem. All rights reserved.<br />
+        Designed with elegance. Coded with passion.
+      </p>
+    </footer>
   );
 }

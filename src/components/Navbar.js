@@ -1,131 +1,84 @@
-// import { Link } from 'react-router-dom';
-// import './Navbar.css'; // External CSS file
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
-// export default function Navbar() {
-//   return (
-
-//     <>
-
-
-
-//       {/* 
-
-//     <nav className="navbar">
-//       <div className="logo">Amna</div>
-//       <ul className="nav-links">
-//         <li><Link to="/">Home</Link></li>
-//         <li><Link to="/projects">Projects</Link></li>
-//         <li><Link to="/contact">Contact</Link></li>
-//       </ul>
-//     </nav>
-//  */}
-
-
-
-
-
-
-
-
-
-
-
-
-// <header className="s-header">
-//   <div className="row s-header__inner width-sixteen-col">
-
-//     <div className="s-header__block">
-//       <div className="s-header__logo">
-//         <a className="logo" href="index.html">
-//           <img src="images/logo.svg" alt="Homepage" />
-//         </a>
-//       </div>
-
-//       <a className="s-header__menu-toggle" href="#0">
-//         <span>Menu</span>
-//       </a>
-//     </div>
-
-//     <nav className="s-header__nav">
-//       <ul className="s-header__menu-links">
-//         <li><a href="about.html">About</a></li>
-//         <li><a href="services.html">Services</a></li>
-//         <li><a href="blog.html">Project</a></li>
-//         <li><a href="contact.html">Contact</a></li>
-//       </ul>
-
-//       <div className="s-header__contact">
-//         <a
-//           href="contact.html"
-//           className="btn btn--primary s-header__contact-btn"
-//         >
-//           Let's Work Together
-//         </a>
-//       </div>
-//     </nav>
-
-//   </div>
-// </header>
-
-
-
-
-//     </>
-
-
-
-
-
-
-
-
-
-
-
-//   );
-// }
-
-
-
-
-
-import { Link } from 'react-router-dom';
-
+const NAV_LINKS = ['About', 'Skills', 'Services', 'Projects', 'Experience', 'Contact'];
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('');
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      let current = '';
+      NAV_LINKS.forEach(l => {
+        const el = document.getElementById(l.toLowerCase());
+        if (el && window.scrollY >= el.offsetTop - 130) current = l.toLowerCase();
+      });
+      setActive(current);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id.toLowerCase());
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
+  };
+
   return (
-    <header className="s-header">
-      <div className="row s-header__inner width-sixteen-col">
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <button
+          className="navbar-logo"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          AM<span>NA</span>
+        </button>
 
-        <div className="s-header__block">
-        
+        <ul className="navbar-links">
+          {NAV_LINKS.map(l => (
+            <li key={l}>
+              <a
+                href={`#${l.toLowerCase()}`}
+                className={active === l.toLowerCase() ? 'active' : ''}
+                onClick={e => { e.preventDefault(); scrollTo(l); }}
+              >
+                {l}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          <a className="s-header__menu-toggle" href="#0">
-            <span>Menu</span>
-          </a>
-        </div>
+        <button className="navbar-cta" onClick={() => scrollTo('Contact')}>
+          Let's Talk
+        </button>
 
-        <nav className="s-header__nav">
-          <ul className="s-header__menu-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/service">Services</Link></li>
-           
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/blog">Project</Link></li>
-          </ul>
-
-          <div className="s-header__contact">
-            <Link
-              to="/contact"
-              className="btn btn--primary s-header__contact-btn"
-            >
-              Let's Work Together
-            </Link>
-          </div>
-        </nav>
-
+        <button
+          className={`hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen
+            ? <X size={22} color="#fff" />
+            : <Menu size={22} color="#fff" />}
+        </button>
       </div>
-    </header>
+
+      <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
+        {NAV_LINKS.map(l => (
+          <a
+            key={l}
+            href={`#${l.toLowerCase()}`}
+            onClick={e => { e.preventDefault(); scrollTo(l); }}
+          >
+            {l}
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }

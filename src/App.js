@@ -1,33 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './assets/css/elegant.css';
 import Navbar from './components/Navbar';
-// eslint-disable-next-line no-unused-vars
-import Footer from './components/Footer';
+import Hero from './components/Hero';
 import About from './components/About';
-import Home from './components/Home';
-import Blog from './components/Blog'
-
-import Service from './components/Service';
+import Skills from './components/Skills';
+import Services from './components/Services';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
-import './App.css';
-import "./assets/css/vendor.css";
-import "./assets/css/styles.css";// Importing the CSS file for App component
+import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
+import ScrollTopBtn from './components/ScrollTopBtn';
 
 function App() {
   return (
-    <Router>
+    <div style={{ background: '#0f0f13', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+      <div className="orb orb-3" />
+      <ScrollProgress />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-    
-        <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path='blog' element={<Blog></Blog>}/>
-        <Route path="/service" element={<Service/>} />
-      </Routes>
+      <Hero />
+      <About />
+      <Skills />
+      <Services />
+      <Projects />
+      <Experience />
+      <Contact />
       <Footer />
-    </Router>
+      <ScrollTopBtn />
+    </div>
   );
 }
 

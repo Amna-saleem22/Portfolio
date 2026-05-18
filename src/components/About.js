@@ -1,115 +1,63 @@
-import React from "react";
+import React, { useEffect, useRef } from 'react';
+import { Mail } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from './SocialIcons';
 
-const About = () => {
+const stats = [
+  { value: '2+', label: 'Years Experience' },
+  { value: '15+', label: 'Projects Built' },
+  { value: '10+', label: 'Technologies' },
+  { value: '100%', label: 'Commitment' },
+];
+
+export default function About() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } }, { threshold: 0.1 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <div id="page" className="s-pagewrap">
-
-      {/* Page Header */}
-      <section id="content" className="s-content">
-
-        <section className="s-pageheader pageheader">
-          <div className="row">
-            <div className="column xl-12">
-              <h1 className="page-title">
-                <span className="page-title__small-type text-pretitle">About</span>
-                Hi, I'm Amna!
-              </h1>
+    <section id="about" className="section section-alt">
+      <div className="section-inner">
+        <div className="about-grid reveal" ref={ref}>
+          <div className="about-text">
+            <span className="section-label">About Me</span>
+            <h2>Engineering<br /><span className="text-gradient-gold" style={{ fontStyle: 'italic' }}>with purpose.</span></h2>
+            <p>
+              I'm a motivated Web Developer and Software Engineering diploma student with hands-on experience building responsive, user-friendly digital products. I turn ideas into clean, functional, and visually appealing solutions.
+            </p>
+            <p>
+              I work across the full stack — from HTML, CSS, and React on the frontend, to C#, ASP.NET MVC, PHP, Laravel, and Node.js on the backend, with MySQL and MongoDB for data.
+            </p>
+            <p>
+              Alongside my technical journey, I'm also pursuing CMA (Cost & Management Accounting), which gives me a business-grounded perspective that helps me deliver value-driven web solutions.
+            </p>
+            <div className="social-links">
+              <a href="https://github.com/Amna-Saleem22" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub">
+                <GitHubIcon size={20} />
+              </a>
+              <a href="https://linkedin.com/in/amna-saleem-it/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
+                <LinkedInIcon size={20} />
+              </a>
+              <a href="mailto:saleemamna431@gmail.com" className="social-link" aria-label="Email">
+                <Mail size={20} />
+              </a>
             </div>
           </div>
-        </section> {/* end pageheader */}
 
-        {/* Page Content */}
-      <section className="s-pagecontent pagecontent">
-
-  {/* Intro Section */}
-  <div className="row pageintro">
-    <div className="column xl-6 lg-12">
-      <h2 className="text-display-title">
-        Inspiring Words to Describe Myself
-      </h2>
-    </div>
-    <div className="column xl-6 lg-12 u-flexitem-x-right">
-      <p className="lead">
-        I am a passionate web developer and designer with a strong drive to create modern, responsive, and user-friendly websites. 
-        I enjoy turning complex ideas into simple, elegant solutions, and continuously strive to improve my skills and knowledge in web development.
-      </p>
-    </div>
-  </div> {/* end pageintro */}
-
-  {/* About Section */}
-  <div className="row pagemain">
-    <div className="column xl-12">
-
-      <h2>My Journey</h2>
-      <p>
-        I started my journey in software development with a strong curiosity about how websites and applications work. 
-        Over time, I gained hands-on experience in frontend and backend technologies, including HTML, CSS, JavaScript, Angular, PHP, Laravel, and C#. 
-        My goal is to deliver high-quality solutions that exceed client expectations.
-      </p>
-
-      <h2 className="u-add-bottom">My Core Values</h2>
-      <div className="grid-list-items list-items">
-        {[
-          { title: "Passion", text: "I am deeply passionate about coding and design. Every project is an opportunity to learn, innovate, and provide value to clients." },
-          { title: "Quality", text: "I ensure that every website and application I create is responsive, optimized, and maintains high standards of usability and aesthetics." },
-          { title: "Reliability", text: "Clients can trust me to deliver projects on time and communicate clearly throughout the development process." },
-          { title: "Continuous Learning", text: "I constantly update my knowledge and skills to stay ahead of emerging technologies and best practices in software development." }
-        ].map((item, index) => (
-          <div key={index} className="grid-list-items__item list-items__item u-remove-bottom">
-            <div className="list-items__item-header">
-              <h6 className="list-items__item-small-title">{item.title}</h6>
-            </div>
-            <p>{item.text}</p>
+          <div className="about-stats">
+            {stats.map((s, i) => (
+              <div key={i} className="stat-card glass-panel">
+                <div className="stat-value">{s.value}</div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div> {/* end grid-list-items */}
-
-      <h2>Why Work With Me</h2>
-      <p>
-        I combine creativity with technical expertise to build solutions that are not only functional but also visually appealing. 
-        My collaborative approach ensures clients are involved at every step, making the development process smooth and efficient.
-      </p>
-      <p>
-        From small personal projects to larger commercial applications, I strive to understand client needs and translate them into reliable, scalable, and beautiful digital experiences.
-      </p>
-
-      <h2>About Myself</h2>
-      <p>
-        Beyond coding, I am an enthusiastic learner who enjoys exploring new technologies and design trends. 
-        I believe in self-improvement, logical problem-solving, and delivering work that makes a real impact. 
-        I am committed, detail-oriented, and always ready to take on new challenges to grow as a professional.
-      </p>
-
-    </div> {/* end column */}
-  </div> {/* end pagemain */}
-
-</section>
-
-
-        {/* Testimonials */}
-       
-      </section> {/* end s-content */}
-
-      {/* Call to Action */}
-     <section id="cta" className="s-cta">
-  <div className="row row-x-center text-center">
-    <div className="column xl-8 lg-12">
-      <h2 className="text-display-title">
-        Let’s build something meaningful together
-      </h2>
-      <p className="lead">
-        I’m open to internships, freelance work, and entry-level opportunities.
-        If you have an idea or a project in mind, let’s connect and discuss it.
-      </p>
-      <a href="#contact" className="btn btn--primary">
-        Let’s Work Together
-      </a>
-    </div>
-  </div>
-</section>{/* end s-cta */}
-
-    </div> /* end page-wrap */
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default About;
+}
