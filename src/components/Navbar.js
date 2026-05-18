@@ -53,9 +53,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button className="navbar-cta" onClick={() => scrollTo('Contact')}>
-          Let's Talk
-        </button>
+        // <button className="navbar-cta" onClick={() => scrollTo('Contact')}>
+        //   Let's Talk
+        // </button>
 
         <button
           className={`hamburger${menuOpen ? ' open' : ''}`}
