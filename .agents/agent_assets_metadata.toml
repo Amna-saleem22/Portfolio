@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "GK5gtqyEkx10PZgBtG8YK"
+uri = "file://artifacts/mockup-sandbox/public/images/hero-abstract.png"
+type = "image"
+title = "abstract gradient gold dark geometric"
