@@ -1,5 +1,5 @@
 import React from 'react';
-import './assets/css/elegant.css';
+import './assets/css/portfolio.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,7 +14,8 @@ import ScrollTopBtn from './components/ScrollTopBtn';
 
 function App() {
   return (
-    <div style={{ background: '#0f0f13', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+    <div className="portfolio-shell">
+      <div className="ambient-grain" aria-hidden="true" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
       <div className="orb orb-3" />

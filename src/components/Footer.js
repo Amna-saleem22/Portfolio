@@ -6,7 +6,8 @@ const NAV_LINKS = ['About', 'Skills', 'Services', 'Projects', 'Experience', 'Con
 
 const scrollTo = (id) => {
   const el = document.getElementById(id.toLowerCase());
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  if (el) el.scrollIntoView({ behavior });
 };
 
 export default function Footer() {
@@ -26,25 +27,16 @@ export default function Footer() {
         ))}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+      <div className="footer-socials">
         <a href="https://github.com/Amna-Saleem22" target="_blank" rel="noopener noreferrer"
-          style={{ color: '#4b5563', transition: 'color 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
-          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
           aria-label="GitHub">
           <GitHubIcon size={20} />
         </a>
         <a href="https://linkedin.com/in/amna-saleem-it/" target="_blank" rel="noopener noreferrer"
-          style={{ color: '#4b5563', transition: 'color 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
-          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
           aria-label="LinkedIn">
           <LinkedInIcon size={20} />
         </a>
         <a href="mailto:saleemamna431@gmail.com"
-          style={{ color: '#4b5563', transition: 'color 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
-          onMouseLeave={e => e.currentTarget.style.color = '#4b5563'}
           aria-label="Email">
           <Mail size={20} />
         </a>
@@ -52,7 +44,7 @@ export default function Footer() {
 
       <p className="footer-copy">
         &copy; {new Date().getFullYear()} Amna Saleem. All rights reserved.<br />
-        Designed with elegance. Coded with passion.
+        Software Engineering student & Web Developer.
       </p>
     </footer>
   );

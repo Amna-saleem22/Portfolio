@@ -13,7 +13,7 @@ export default function ScrollTopBtn() {
   return (
     <button
       className={`scroll-top-btn${visible ? ' visible' : ''}`}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })}
       aria-label="Scroll to top"
     >
       <ArrowUp size={20} />

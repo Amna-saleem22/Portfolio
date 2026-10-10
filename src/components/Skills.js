@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { LayoutTemplate, Code2, PenTool } from 'lucide-react';
+import { LayoutTemplate, Code2, PenTool, Database } from 'lucide-react';
 
 const categories = [
   {
@@ -10,12 +10,17 @@ const categories = [
   {
     icon: <Code2 size={32} />,
     title: 'Backend',
-    skills: ['C#', 'ASP.NET MVC', 'PHP', 'Laravel', 'Node.js', 'MySQL', 'MongoDB'],
+    skills: ['C#', 'ASP.NET MVC', 'PHP', 'Laravel', 'Node.js'],
+  },
+  {
+    icon: <Database size={32} />,
+    title: 'Database & Tools',
+    skills: ['MySQL', 'MongoDB', 'Git & GitHub', 'Authentication', 'REST APIs'],
   },
   {
     icon: <PenTool size={32} />,
-    title: 'Design & Tools',
-    skills: ['UI/UX Design', 'Figma', 'Canva', 'Git & GitHub', 'Authentication', 'REST APIs'],
+    title: 'Design & Workflow',
+    skills: ['UI/UX Design', 'Figma', 'Canva'],
   },
 ];
 

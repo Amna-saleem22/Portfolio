@@ -1,0 +1,1 @@
+- [Legacy dependency security blocks](legacy-dependency-security-blocks.md) — when Replit rejects an old transitive package, check compatible versions before changing the lock.

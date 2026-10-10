@@ -1,9 +1,46 @@
-import React, { useEffect, useRef } from 'react';
-import { Mail, Phone } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Check, Copy, Mail, Phone, Send } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from './SocialIcons';
+
+const PRIMARY_EMAIL = 'saleemamna431@gmail.com';
 
 export default function Contact() {
   const ref = useRef(null);
+  const [copyMessage, setCopyMessage] = useState('');
+
+  const copyEmail = async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(PRIMARY_EMAIL);
+      } else {
+        const field = document.createElement('textarea');
+        field.value = PRIMARY_EMAIL;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        const copied = document.execCommand('copy');
+        document.body.removeChild(field);
+        if (!copied) throw new Error('Clipboard unavailable');
+      }
+      setCopyMessage('Email address copied.');
+    } catch {
+      setCopyMessage('Copy unavailable. Select the email address above.');
+    }
+  };
+
+  const openMailDraft = (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = form.get('name').trim();
+    const email = form.get('email').trim();
+    const subject = form.get('subject').trim();
+    const message = form.get('message').trim();
+    const body = `${message}\n\n— ${name}\n${email}`;
+    window.location.href = `mailto:${PRIMARY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -25,10 +62,17 @@ export default function Contact() {
             Currently available for freelance projects, internships, and entry-level opportunities. Reach out — let's discuss your idea.
           </p>
 
-          <a href="mailto:saleemamna431@gmail.com" className="contact-email-btn">
-            <Mail size={22} />
-            saleemamna431@gmail.com
-          </a>
+          <div className="contact-actions">
+            <a href={`mailto:${PRIMARY_EMAIL}`} className="contact-email-btn">
+              <Mail size={19} />
+              {PRIMARY_EMAIL}
+            </a>
+            <button className="copy-email-btn" type="button" onClick={copyEmail}>
+              {copyMessage === 'Email address copied.' ? <Check size={16} /> : <Copy size={16} />}
+              {copyMessage === 'Email address copied.' ? 'Copied' : 'Copy email'}
+            </button>
+            <span className="sr-only" aria-live="polite">{copyMessage}</span>
+          </div>
 
           <div className="contact-cards">
             <div className="contact-card glass-panel">
@@ -56,7 +100,7 @@ export default function Contact() {
               <div className="contact-detail">
                 <div className="contact-detail-label">Phone</div>
                 <div className="contact-detail-value">
-                  <Phone size={14} style={{ color: '#f59e0b' }} />
+                  <Phone size={14} className="phone-icon" />
                   +92 335 3784278
                 </div>
               </div>
@@ -73,6 +117,35 @@ export default function Contact() {
               </div>
             </div>
           </div>
+
+          <form className="composer glass-panel" onSubmit={openMailDraft}>
+            <div className="composer-heading">
+              <h3>Write a note</h3>
+              <p>Fill this in to open a draft addressed to {PRIMARY_EMAIL} in your email app.</p>
+            </div>
+            <div className="composer-grid">
+              <div className="composer-field">
+                <label htmlFor="contact-name">Your name</label>
+                <input id="contact-name" name="name" autoComplete="name" required />
+              </div>
+              <div className="composer-field">
+                <label htmlFor="contact-email">Your email</label>
+                <input id="contact-email" name="email" type="email" autoComplete="email" required />
+              </div>
+              <div className="composer-field full">
+                <label htmlFor="contact-subject">Subject</label>
+                <input id="contact-subject" name="subject" required />
+              </div>
+              <div className="composer-field full">
+                <label htmlFor="contact-message">Message</label>
+                <textarea id="contact-message" name="message" required />
+              </div>
+            </div>
+            <button className="btn-primary composer-submit" type="submit">
+              Open email draft <Send size={15} />
+            </button>
+            <p className="composer-note">This opens your email app with a draft. Nothing is sent from this page.</p>
+          </form>
         </div>
       </div>
     </section>

@@ -9,6 +9,11 @@ export default function Hero() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setDisplayed(ROLES[0]);
+      return undefined;
+    }
     const role = ROLES[roleIdx];
     let timeout;
     if (!deleting && displayed.length < role.length) {
@@ -26,24 +31,32 @@ export default function Hero() {
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    if (el) el.scrollIntoView({ behavior });
   };
 
   return (
     <section className="hero">
       <div className="hero-inner">
-        <div>
-          <div className="hero-badge">Full-Stack Developer</div>
+        <div className="hero-copy">
+          <div className="hero-meta">
+            <div className="hero-badge">Full-Stack Developer</div>
+            <div className="hero-status" aria-label="Available for freelance projects, internships, and entry-level opportunities">
+              <span className="hero-status-dot" aria-hidden="true" />
+              <span>Freelance · internships · entry-level</span>
+            </div>
+          </div>
           <h1 className="hero-title">
-            Crafting<br />
-            <span className="text-gradient-gold" style={{ fontStyle: 'italic' }}>Digital</span><br />
-            Experiences.
+            <span className="hero-name">Amna Saleem</span>
+            Thoughtful<br />
+            <span className="text-gradient-gold">digital</span><br />
+            experiences.
           </h1>
           <p className="hero-subtitle">
             Hi, I'm <strong style={{ color: '#fff', fontWeight: 600 }}>Amna</strong> — a Software Engineering student and Web Developer building exceptional digital products that live on the internet.
           </p>
-          <div style={{ marginBottom: '0.5rem', height: '2rem', color: '#f59e0b', fontWeight: 600, fontSize: '1rem', letterSpacing: '0.03em' }}>
-            {displayed}<span style={{ borderRight: '2px solid #f59e0b', marginLeft: 2, animation: 'blink 0.75s step-end infinite' }}>&nbsp;</span>
+          <div className="hero-role" aria-live="polite">
+            {displayed}<span className="typing-caret" aria-hidden="true">&nbsp;</span>
           </div>
           <div className="hero-buttons" style={{ marginTop: '1.5rem' }}>
             <button className="btn-primary" onClick={() => scrollTo('projects')}>
@@ -55,7 +68,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-visual">
+        <div className="hero-visual" role="img" aria-label="A code preview introducing Amna's developer profile">
           <div className="hero-visual-glow" />
           <div className="hero-code-card">
             <div className="code-dots" style={{ marginTop: '1rem' }}>
@@ -74,26 +87,22 @@ export default function Hero() {
               <div>&nbsp;&nbsp;<span className="code-fn">available</span>: <span className="code-keyword">true</span>,</div>
               <div>&nbsp;&nbsp;<span className="code-fn">hire</span>: () <span className="code-keyword">=&gt;</span> <span className="code-string">"Let's talk!"</span></div>
               <div>{'}'}</div>
-              <div style={{ marginTop: '0.5rem' }}><span className="code-comment">// Currently building awesome things ✨</span></div>
+              <div style={{ marginTop: '0.5rem' }}><span className="code-comment">{'// Currently building thoughtful web experiences'}</span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div style={{ textAlign: 'center', paddingBottom: '3rem', position: 'relative', zIndex: 1 }}>
+      <div className="hero-scroll">
         <button
           onClick={() => scrollTo('about')}
-          style={{ background: 'none', border: 'none', color: '#4b5563', cursor: 'pointer', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}
+          aria-label="Scroll to About"
         >
           <span>Scroll</span>
           <ArrowDown size={18} style={{ animation: 'bounce 2s ease-in-out infinite' }} />
         </button>
       </div>
 
-      <style>{`
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-        @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-      `}</style>
     </section>
   );
 }

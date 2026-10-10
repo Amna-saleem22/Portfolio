@@ -24,7 +24,8 @@ export default function Navbar() {
 
   const scrollTo = (id) => {
     const el = document.getElementById(id.toLowerCase());
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    if (el) el.scrollIntoView({ behavior });
     setMenuOpen(false);
   };
 
@@ -33,8 +34,9 @@ export default function Navbar() {
       <div className="navbar-inner">
         <button
           className="navbar-logo"
+          aria-label="Amna Saleem — back to top"
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })}
         >
           AM<span>NA</span>
         </button>
@@ -45,6 +47,7 @@ export default function Navbar() {
               <a
                 href={`#${l.toLowerCase()}`}
                 className={active === l.toLowerCase() ? 'active' : ''}
+                aria-current={active === l.toLowerCase() ? 'location' : undefined}
                 onClick={e => { e.preventDefault(); scrollTo(l); }}
               >
                 {l}
@@ -58,7 +61,9 @@ export default function Navbar() {
         <button
           className={`hamburger${menuOpen ? ' open' : ''}`}
           onClick={() => setMenuOpen(o => !o)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           {menuOpen
             ? <X size={22} color="#fff" />
@@ -66,11 +71,12 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
+      <div id="mobile-navigation" className={`mobile-menu${menuOpen ? ' open' : ''}`}>
         {NAV_LINKS.map(l => (
           <a
             key={l}
             href={`#${l.toLowerCase()}`}
+            aria-current={active === l.toLowerCase() ? 'location' : undefined}
             onClick={e => { e.preventDefault(); scrollTo(l); }}
           >
             {l}
