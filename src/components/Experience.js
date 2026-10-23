@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 const items = [
   {
-    period: '2023 – Present',
+    period: 'Complete',
     title: 'Software Engineering Diploma',
-    org: 'Institute of Software Engineering',
+    org: 'Aptech Learning Center',
     desc: 'Comprehensive program covering frontend and backend web development. Learned React, Angular, ASP.NET MVC, C#, PHP, Laravel, Node.js, MySQL, MongoDB, and modern software engineering principles.',
   },
   {
@@ -19,12 +19,7 @@ const items = [
     org: 'Self-Directed & Academic',
     desc: 'Built multiple full-stack applications including an e-commerce platform in Angular, a Laundry Management System in ASP.NET MVC + Angular, and various React-based web apps with authentication and cart systems.',
   },
-  {
-    period: '2023',
-    title: 'Frontend & UI/UX Practice',
-    org: 'Freelance & Personal Projects',
-    desc: 'Developed responsive websites, portfolio pages, and UI templates using HTML, CSS, JavaScript, React, Figma, and Canva. Focused on clean code, modern design, and great user experience.',
-  },
+  
 ];
 
 export default function Experience() {

@@ -42,10 +42,6 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className="footer-copy">
-        &copy; {new Date().getFullYear()} Amna Saleem. All rights reserved.<br />
-        Software Engineering student & Web Developer.
-      </p>
     </footer>
   );
 }

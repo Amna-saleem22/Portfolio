@@ -101,7 +101,7 @@ export default function Contact() {
                 <div className="contact-detail-label">Phone</div>
                 <div className="contact-detail-value">
                   <Phone size={14} className="phone-icon" />
-                  +92 335 3784278
+                  +92 314 1222320
                 </div>
               </div>
               <div className="contact-detail">

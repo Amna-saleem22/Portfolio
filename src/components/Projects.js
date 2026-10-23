@@ -11,20 +11,40 @@ const projects = [
     live: 'https://project-angular-flax.vercel.app/',
     github: 'https://github.com/Amna-saleem22/Project-angular/',
   },
+  
+
+{
+  title: 'Hotel Booking Management System',
+  desc: 'A full-stack hotel booking management system developed as a semester-end project, featuring room management, booking workflows, customer management, and booking data handling.',
+  tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Material UI'],
+  gradient: 'linear-gradient(135deg, rgba(30,64,175,0.25), rgba(15,23,42,0.25))',
+  live: null,
+  github: https://github.com/Amna-saleem22/new-vision,
+},
+{
+  title: 'Photographer Portfolio',
+  desc: 'A modern photographer portfolio designed to showcase photography work through an elegant, responsive interface, with an AI-powered feature to enhance the overall user experience.',
+  tech: ['React', 'JavaScript', 'CSS', 'AI Integration'],
+  gradient: 'linear-gradient(135deg, rgba(219,39,119,0.22), rgba(124,58,237,0.25))',
+  live: https://photographer-portfolio-alpha-henna.vercel.app/,
+  github: https://github.com/Amna-saleem22/photographer-portfolio,
+},
+
+{
+  title: 'R Language Business Dashboard',
+  desc: 'An interactive business dashboard developed as a semester-end project using R, focused on data analysis, business metrics, and visual reporting to support data-driven insights.',
+  tech: ['R', 'Data Analysis', 'Data Visualization', 'Shiny'],
+  gradient: 'linear-gradient(135deg, rgba(16,185,129,0.22), rgba(6,78,59,0.25))',
+  live: null,
+  github: https://github.com/Amna-saleem22/eproject_06,
+},
+  
   {
-    title: 'Laundry Management App',
-    desc: 'Full-stack enterprise solution with ASP.NET MVC backend and Angular frontend. Features customer management, delivery tracking, and invoice generation.',
-    tech: ['ASP.NET MVC', 'Angular', 'SQL Server'],
-    gradient: 'linear-gradient(135deg, rgba(20,184,166,0.25), rgba(16,185,129,0.25))',
-    live: null,
-    github: 'https://github.com/Amna-saleem22/Laundry-Management-System/tree/main/eproject/eproject',
-  },
-  {
-    title: 'Web App with Auth & Cart',
-    desc: 'Secure profile-based web application with custom authentication flows, protected routes, and a feature-rich shopping cart system.',
-    tech: ['React', 'JavaScript', 'CSS'],
-    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.25), rgba(239,68,68,0.25))',
-    live: 'https://profile-navy-gamma.vercel.app/',
+   title: 'LUXE Couture – Fashion E-Commerce',
+desc: 'Premium South Asian fashion e-commerce website featuring men’s and women’s collections, bridal couture, product filtering, promotional offers, customer reviews, and an interactive shopping cart.',
+tech: ['React', 'JavaScript', 'CSS'],
+gradient: 'linear-gradient(135deg, rgba(192,132,252,0.25), rgba(244,114,182,0.25))',
+    live: 'https://addtocart-cyan.vercel.app/',
     github: 'https://github.com/Amna-saleem22/Profile',
   },
   {
@@ -35,14 +55,7 @@ const projects = [
     live: 'https://seed-inov-eaqm.vercel.app/',
     github: 'https://github.com/Amna-saleem22/seedInov',
   },
-  {
-    title: 'Dynamic E-Commerce',
-    desc: 'Modern online store focusing on core shopping functionality, dynamic product data handling, and clean reusable component architecture.',
-    tech: ['React', 'JavaScript', 'CSS'],
-    gradient: 'linear-gradient(135deg, rgba(99,102,241,0.25), rgba(168,85,247,0.25))',
-    live: null,
-    github: 'https://github.com/Amna-saleem22/ecommerce-site',
-  },
+  
 ];
 
 export default function Projects() {

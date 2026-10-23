@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="hero-badge">Full-Stack Developer</div>
             <div className="hero-status" aria-label="Available for freelance projects, internships, and entry-level opportunities">
               <span className="hero-status-dot" aria-hidden="true" />
-              <span>Freelance · internships · entry-level</span>
+              {/* <span>Freelance · internships · entry-level</span> */}
             </div>
           </div>
           <h1 className="hero-title">
