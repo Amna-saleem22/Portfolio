@@ -19,15 +19,15 @@ const projects = [
   tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Material UI'],
   gradient: 'linear-gradient(135deg, rgba(30,64,175,0.25), rgba(15,23,42,0.25))',
   live: null,
-  github: https://github.com/Amna-saleem22/new-vision,
+  github: 'https://github.com/Amna-saleem22/new-vision',
 },
 {
   title: 'Photographer Portfolio',
   desc: 'A modern photographer portfolio designed to showcase photography work through an elegant, responsive interface, with an AI-powered feature to enhance the overall user experience.',
   tech: ['React', 'JavaScript', 'CSS', 'AI Integration'],
   gradient: 'linear-gradient(135deg, rgba(219,39,119,0.22), rgba(124,58,237,0.25))',
-  live: https://photographer-portfolio-alpha-henna.vercel.app/,
-  github: https://github.com/Amna-saleem22/photographer-portfolio,
+  live: 'https://photographer-portfolio-alpha-henna.vercel.app/',
+  github: 'https://github.com/Amna-saleem22/photographer-portfolio',
 },
 
 {
@@ -36,7 +36,7 @@ const projects = [
   tech: ['R', 'Data Analysis', 'Data Visualization', 'Shiny'],
   gradient: 'linear-gradient(135deg, rgba(16,185,129,0.22), rgba(6,78,59,0.25))',
   live: null,
-  github: https://github.com/Amna-saleem22/eproject_06,
+  github: 'https://github.com/Amna-saleem22/eproject_06',
 },
   
   {
