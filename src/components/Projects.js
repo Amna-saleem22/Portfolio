@@ -54,8 +54,7 @@ gradient: 'linear-gradient(135deg, rgba(192,132,252,0.25), rgba(244,114,182,0.25
     gradient: 'linear-gradient(135deg, rgba(236,72,153,0.25), rgba(239,68,68,0.25))',
     live: 'https://seed-inov-eaqm.vercel.app/',
     github: 'https://github.com/Amna-saleem22/seedInov',
-  },
-  
+  }
 ];
 
 export default function Projects() {
